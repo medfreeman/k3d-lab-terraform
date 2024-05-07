@@ -1,0 +1,36 @@
+{
+  "extensions": {
+    "recommendations": [
+      "bierner.github-markdown-preview",
+      "editorconfig.editorconfig",
+      "github.vscode-github-actions",
+      "mrmlnc.vscode-json5",
+      "rohit-gohri.format-code-action"
+    ]
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.formatDocument": "always",
+        "source.fixAll.eslint": "always"
+      }
+    },
+    "[json][jsonc][json5][markdown][yaml]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+      "source.formatDocument": "always"
+    },
+    "editor.fontFamily": "'MesloLGS NF', Consolas, 'Courier New', monospace",
+    "editor.formatOnSave": false,
+    "explorer.fileNesting.enabled": true,
+    "prettier.configPath": "./prettier.config.js",
+    "prettier.useEditorConfig": true
+  }
+}
