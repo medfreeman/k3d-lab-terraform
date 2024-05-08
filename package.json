@@ -18,7 +18,17 @@
     "postinstall": "husky",
     "lint": "pnpm lint:format && pnpm lint:terraform",
     "lint:format": "prettier --write './**/*.{js,md,json,json5,yaml}'",
-    "lint:terraform": "tofu fmt && tofu validate"
+    "lint:terraform": "tofu fmt && tofu validate",
+    "init:cluster": "folder=cluster pnpm tofu:init",
+    "plan:cluster": "folder=cluster pnpm tofu:plan",
+    "show:cluster": "folder=cluster pnpm tofu:show",
+    "apply:cluster": "folder=cluster pnpm tofu:apply",
+    "destroy:cluster": "folder=cluster pnpm tofu:destroy",
+    "tofu:init": "tofu -chdir=./$folder init",
+    "tofu:plan": "tofu -chdir=./$folder plan -out=plan.tfplan",
+    "tofu:show": "tofu -chdir=./$folder show plan.tfplan",
+    "tofu:apply": "tofu -chdir=./$folder apply -auto-approve 'plan.tfplan'",
+    "tofu:destroy": "tofu -chdir=./$folder destroy -auto-approve"
   },
   "repository": "git@github.com:medfreeman/k3d-lab-terraform.git",
   "homepage": "https://github.com/medfreeman/k3d-lab-terraform",
