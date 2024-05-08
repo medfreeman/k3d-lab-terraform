@@ -12,6 +12,9 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "./cluster"
     }
   ],
   "settings": {
@@ -42,6 +45,9 @@
     "editor.fontFamily": "'MesloLGS NF', Consolas, 'Courier New', monospace",
     "editor.formatOnSave": false,
     "explorer.fileNesting.enabled": true,
+    "files.exclude": {
+      "cluster/": true
+    },
     "opentofu.codelens.referenceCount": true,
     "opentofu.experimentalFeatures.prefillRequiredFields": true,
     "opentofu.experimentalFeatures.validateOnSave": true,
