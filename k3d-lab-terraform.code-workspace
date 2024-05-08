@@ -3,6 +3,7 @@
     "recommendations": [
       "bierner.github-markdown-preview",
       "editorconfig.editorconfig",
+      "gamunu.opentofu",
       "github.vscode-github-actions",
       "mrmlnc.vscode-json5",
       "rohit-gohri.format-code-action"
@@ -17,12 +18,23 @@
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.codeActionsOnSave": {
-        "source.formatDocument": "always",
-        "source.fixAll.eslint": "always"
+        "source.formatDocument": "always"
       }
     },
     "[json][jsonc][json5][markdown][yaml]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[terraform]": {
+      "editor.defaultFormatter": "gamunu.opentofu",
+      "editor.codeActionsOnSave": {
+        "source.formatAll.opentofu": "always"
+      }
+    },
+    "[terraform-vars]": {
+      "editor.defaultFormatter": "gamunu.opentofu",
+      "editor.codeActionsOnSave": {
+        "source.formatAll.opentofu": "always"
+      }
     },
     "editor.codeActionsOnSave": {
       "source.formatDocument": "always"
@@ -30,6 +42,9 @@
     "editor.fontFamily": "'MesloLGS NF', Consolas, 'Courier New', monospace",
     "editor.formatOnSave": false,
     "explorer.fileNesting.enabled": true,
+    "opentofu.codelens.referenceCount": true,
+    "opentofu.experimentalFeatures.prefillRequiredFields": true,
+    "opentofu.experimentalFeatures.validateOnSave": true,
     "prettier.configPath": "./prettier.config.js",
     "prettier.useEditorConfig": true
   }
