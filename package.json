@@ -25,7 +25,7 @@
     "apply:cluster": "folder=cluster pnpm tofu:apply",
     "destroy:cluster": "folder=cluster pnpm tofu:destroy",
     "tofu:init": "tofu -chdir=./$folder init",
-    "tofu:plan": "tofu -chdir=./$folder plan -out=plan.tfplan",
+    "tofu:plan": "tofu -chdir=./$folder plan -var-file=../terraform.tfvars -out=plan.tfplan",
     "tofu:show": "tofu -chdir=./$folder show plan.tfplan",
     "tofu:apply": "tofu -chdir=./$folder apply -auto-approve 'plan.tfplan'",
     "tofu:destroy": "tofu -chdir=./$folder destroy -auto-approve"

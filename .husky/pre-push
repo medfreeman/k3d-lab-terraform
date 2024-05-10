@@ -1,2 +1,2 @@
-tofu -chdir=./cluster  plan -out=plan.tfplan 1> /dev/null \
+tofu -chdir=./cluster plan -var-file=../terraform.tfvars.example -out=plan.tfplan 1> /dev/null \
 && tofu -chdir=./cluster show plan.tfplan
