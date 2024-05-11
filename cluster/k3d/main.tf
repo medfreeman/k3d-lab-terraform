@@ -1,19 +1,19 @@
 resource "k3d_cluster" "cluster" {
   name    = var.cluster_name
-  servers = 1
-  agents  = 2
+  servers = var.cluster_nodes_number_of_servers
+  agents  = var.cluster_nodes_number_of_agents
 
   kube_api {
-    host      = "k3d-lab-cluster.local"
-    host_ip   = "127.0.0.1"
-    host_port = 6445
+    host      = var.host_name
+    host_ip   = var.host_ip
+    host_port = var.host_port
   }
 
-  image   = "rancher/k3s:v1.29.4-k3s1"
-  network = "lab-net"
+  image   = var.cluster_nodes_docker_image
+  network = var.cluster_nodes_network_name
 
   port {
-    host_port      = 8080
+    host_port      = var.ingress_port
     container_port = 80
     node_filters = [
       "loadbalancer",
@@ -25,8 +25,19 @@ resource "k3d_cluster" "cluster" {
     disable_image_volume  = false
   }
 
+  k3s {
+    dynamic "extra_args" {
+      for_each = var.ingress_enable_traefik ? range(0) : []
+
+      content {
+        arg          = "--disable=traefik"
+        node_filters = ["server:*"]
+      }
+    }
+  }
+
   kubeconfig {
     update_default_kubeconfig = true
-    switch_current_context    = true
+    switch_current_context    = false
   }
 }

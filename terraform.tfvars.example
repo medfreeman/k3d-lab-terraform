@@ -1,1 +1,10 @@
-cluster_name = "lab-cluster"
+cluster_name               = "lab-cluster"
+cluster_nodes_network_name = "lab-net"
+# cluster_nodes_docker_image = "rancher/k3s:v1.29.4-k3s1"
+# cluster_nodes_number_of_agents = 2
+# cluster_nodes_number_of_servers = 1
+# host_ip = "127.0.0.1"
+host_name = "k3d-lab-cluster.local"
+# host_port = 6445
+# ingress_class = traefik
+ingress_port = 8083

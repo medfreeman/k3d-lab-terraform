@@ -19,4 +19,9 @@ resource "helm_release" "ingress-nginx" {
 
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "nginx-ingress-controller"
+  lint       = true
+
+  values = [
+    file("${path.module}/chart/values.yaml")
+  ]
 }
