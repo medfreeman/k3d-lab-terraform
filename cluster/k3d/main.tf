@@ -34,6 +34,19 @@ resource "k3d_cluster" "cluster" {
         node_filters = ["server:*"]
       }
     }
+
+    extra_args {
+      arg          = "--flannel-backend=none"
+      node_filters = ["server:*"]
+    }
+    extra_args {
+      arg          = "--disable-network-policy"
+      node_filters = ["server:*"]
+    }
+    extra_args {
+      arg          = "--cluster-cidr=192.168.0.0/16"
+      node_filters = ["server:*"]
+    }
   }
 
   kubeconfig {

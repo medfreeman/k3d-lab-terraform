@@ -13,6 +13,17 @@ module "k3s-cluster" {
   ingress_port                    = var.ingress_port
 }
 
+module "calico" {
+  source = "./calico"
+
+  providers = {
+    kubernetes = kubernetes
+    helm       = helm
+  }
+
+  depends_on = [module.k3s-cluster.cluster_name]
+}
+
 module "ingress-nginx" {
   count = var.ingress_class == "nginx" ? 1 : 0
 
@@ -23,5 +34,5 @@ module "ingress-nginx" {
     helm       = helm
   }
 
-  depends_on = [module.k3s-cluster.cluster_name]
+  depends_on = [module.calico.id]
 }
