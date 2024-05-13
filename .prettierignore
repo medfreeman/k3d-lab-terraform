@@ -1,2 +1,3 @@
 pnpm-lock.yaml
 **/templates/*.yaml
+**/Chart.lock
