@@ -1,3 +1,23 @@
-import prettierConfig from 'eslint-config-really-strict/prettier.config';
+export default {
+  $schema: 'http://json.schemastore.org/prettierrc',
 
-export default prettierConfig;
+  printWidth: 80,
+  singleQuote: true,
+  semi: true,
+  trailingComma: 'all',
+  endOfLine: 'lf',
+  overrides: [
+    {
+      files: '*.{code-workspace}',
+      options: {
+        parser: 'json',
+      },
+    },
+    {
+      files: '*.yaml',
+      options: {
+        singleQuote: false,
+      },
+    },
+  ],
+};
