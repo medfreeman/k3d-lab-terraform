@@ -1,0 +1,13 @@
+{{- if eq .Values.rabbitmq.ingress.ingressClassName "traefik" }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-prefix-rabbitmq
+  namespace: kube-system
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+      - {{ .Values.rabbitmq.ingress.path }}
+{{- end }}
