@@ -70,7 +70,7 @@ variable "host_port" {
 
 variable "ingress_class" {
   type        = string
-  description = "Whether to enable installation of `traefik` as a Kubernetes default ingress controller."
+  description = "Whether to enable installation of `traefik` or `nginx` as Kubernetes default ingress controller."
   default     = "traefik"
 
   validation {
