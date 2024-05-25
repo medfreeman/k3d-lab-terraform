@@ -25,4 +25,9 @@ resource "helm_release" "ingress-nginx" {
   values = [
     file("${path.module}/chart/values.yaml")
   ]
+
+  set {
+    name  = "containerPorts.http"
+    value = var.ingress_port
+  }
 }
