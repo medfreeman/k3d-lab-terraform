@@ -8,12 +8,6 @@ export default {
   endOfLine: 'lf',
   overrides: [
     {
-      files: '*.{code-workspace}',
-      options: {
-        parser: 'json',
-      },
-    },
-    {
       files: '*.yaml',
       options: {
         singleQuote: false,
