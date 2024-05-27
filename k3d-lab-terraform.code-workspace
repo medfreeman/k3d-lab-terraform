@@ -6,6 +6,7 @@
       "gamunu.opentofu",
       "github.vscode-github-actions",
       "mrmlnc.vscode-json5",
+      "ms-kubernetes-tools.vscode-kubernetes-tools",
       "rohit-gohri.format-code-action"
     ]
   },
@@ -51,6 +52,10 @@
     "editor.fontFamily": "'MesloLGS NF', Consolas, 'Courier New', monospace",
     "editor.formatOnSave": false,
     "explorer.fileNesting.enabled": true,
+    "files.associations": {
+      "terraform.tfvars.example": "terraform-vars",
+      "values.yaml": "helm"
+    },
     "files.exclude": {
       "cluster/": true,
       "helm/": true,
