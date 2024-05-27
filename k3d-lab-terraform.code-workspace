@@ -15,6 +15,12 @@
     },
     {
       "path": "./cluster"
+    },
+    {
+      "path": "./helm"
+    },
+    {
+      "path": "./rabbitmq"
     }
   ],
   "settings": {
@@ -46,7 +52,9 @@
     "editor.formatOnSave": false,
     "explorer.fileNesting.enabled": true,
     "files.exclude": {
-      "cluster/": true
+      "cluster/": true,
+      "helm/": true,
+      "rabbitmq/": true
     },
     "opentofu.codelens.referenceCount": true,
     "opentofu.experimentalFeatures.prefillRequiredFields": true,
