@@ -1,4 +1,0 @@
-{
-  "*.js": ["prettier --write"],
-  "*.{code-workspace,md,json,json5,yaml}": ["prettier --write"]
-}

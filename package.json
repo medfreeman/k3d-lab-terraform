@@ -18,7 +18,7 @@
     "postinstall": "husky",
     "lint": "pnpm lint:format && pnpm lint:terraform",
     "lint:format": "prettier --write './**/*.{js,md,json,json5,yaml}'",
-    "lint:terraform": "echo 'lint:terraform'"
+    "lint:terraform": "tofu fmt && tofu validate"
   },
   "repository": "git@github.com:medfreeman/k3d-lab-terraform.git",
   "homepage": "https://github.com/medfreeman/k3d-lab-terraform",
