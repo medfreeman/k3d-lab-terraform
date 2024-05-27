@@ -1,0 +1,7 @@
+apiVersion: v2
+name: rabbitmq
+version: 14.1.2
+dependencies:
+  - name: rabbitmq
+    version: '14.1.2'
+    repository: 'oci://registry-1.docker.io/bitnamicharts'

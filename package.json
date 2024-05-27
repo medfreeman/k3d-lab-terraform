@@ -24,11 +24,16 @@
     "show:cluster": "folder=cluster pnpm tofu:show",
     "apply:cluster": "folder=cluster pnpm tofu:apply",
     "destroy:cluster": "folder=cluster pnpm tofu:destroy -var-file=../terraform.tfvars",
+    "init:rabbitmq": "folder=stack/rabbitmq pnpm tofu:init",
+    "plan:rabbitmq": "folder=stack/rabbitmq pnpm tofu:plan -var-file=../../terraform.tfvars -var='cluster_name=$(tofu -chdir=./cluster output -raw cluster_name)'",
+    "show:rabbitmq": "folder=stack/rabbitmq pnpm tofu:show",
+    "apply:rabbitmq": "folder=stack/rabbitmq pnpm tofu:apply",
+    "destroy:rabbitmq": "folder=stack/rabbitmq pnpm tofu:destroy -var-file=../../terraform.tfvars -var='cluster_name=$(tofu -chdir=./cluster output -raw cluster_name)'",
     "tofu:init": "tofu -chdir=./$folder init",
-    "tofu:plan": "tofu -chdir=./$folder plan -out=plan.tfplan",
+    "tofu:plan": "tofu -chdir=./$folder plan -compact-warnings -out=plan.tfplan",
     "tofu:show": "tofu -chdir=./$folder show plan.tfplan",
     "tofu:apply": "tofu -chdir=./$folder apply -auto-approve 'plan.tfplan'",
-    "tofu:destroy": "tofu -chdir=./$folder destroy -auto-approve"
+    "tofu:destroy": "tofu -chdir=./$folder destroy -compact-warnings -auto-approve"
   },
   "repository": "git@github.com:medfreeman/k3d-lab-terraform.git",
   "homepage": "https://github.com/medfreeman/k3d-lab-terraform",

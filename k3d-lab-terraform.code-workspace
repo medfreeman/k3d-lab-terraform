@@ -21,7 +21,7 @@
       "path": "./helm"
     },
     {
-      "path": "./rabbitmq"
+      "path": "./stack"
     }
   ],
   "settings": {
@@ -59,7 +59,7 @@
     "files.exclude": {
       "cluster/": true,
       "helm/": true,
-      "rabbitmq/": true
+      "stack/": true
     },
     "opentofu.codelens.referenceCount": true,
     "opentofu.experimentalFeatures.prefillRequiredFields": true,
