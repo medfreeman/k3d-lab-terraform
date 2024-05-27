@@ -33,11 +33,11 @@ resource "helm_release" "rabbitmq" {
 
   set {
     name  = "rabbitmq.ingress.path"
-    value = var.ingress_class == "traefik" ? var.ingress_path : "${var.ingress_path}(.*)"
+    value = var.ingress_class == "traefik" ? var.ingress_path : "${var.ingress_path}(/|$)(.*)"
   }
 
   set {
     name  = var.ingress_class == "traefik" ? "rabbitmq.ingress.annotations.traefik\\.ingress\\.kubernetes\\.io/router\\.middlewares" : "rabbitmq.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/rewrite-target"
-    value = var.ingress_class == "traefik" ? "kube-system-strip-prefix-rabbitmq@kubernetescrd" : "/$1"
+    value = var.ingress_class == "traefik" ? "kube-system-strip-prefix-rabbitmq@kubernetescrd" : "/$2"
   }
 }

@@ -1,3 +1,8 @@
+locals {
+  ingress_enable_traefik     = var.ingress_class == "traefik"
+  ingress_enable_nginx_count = var.ingress_class == "nginx" ? 1 : 0
+}
+
 module "k3s-cluster" {
   source = "./k3d"
 
@@ -9,12 +14,12 @@ module "k3s-cluster" {
   host_ip                         = var.host_ip
   host_name                       = var.host_name
   host_port                       = var.host_port
-  ingress_enable_traefik          = var.ingress_class == "traefik"
+  ingress_enable_traefik          = local.ingress_enable_traefik
   ingress_port                    = var.ingress_port
 }
 
 module "ingress-nginx" {
-  count = var.ingress_class == "nginx" ? 1 : 0
+  count = local.ingress_enable_nginx_count
 
   source = "./ingress-nginx"
 
@@ -24,4 +29,6 @@ module "ingress-nginx" {
   }
 
   depends_on = [module.k3s-cluster.cluster_name]
+
+  ingress_port = var.ingress_port
 }

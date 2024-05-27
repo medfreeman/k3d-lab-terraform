@@ -1,6 +1,6 @@
 rabbitmq:
   auth:
-    password: 'password'
+    password: "password"
     securePassword: false
   ingress:
     enabled: true
@@ -8,8 +8,8 @@ rabbitmq:
     # path: /rabbitmq #traefik
     # annotations:
     #   traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-prefix-rabbitmq@kubernetescrd
-    # path: /rabbitmq(.*) #nginx
+    # path: /rabbitmq(/|$)(.*) #nginx
     # annotations:
-    #   nginx.ingress.kubernetes.io/rewrite-target: /$1
+    #   nginx.ingress.kubernetes.io/rewrite-target: /$2
     tls: false
     selfSigned: false

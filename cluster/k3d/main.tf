@@ -1,3 +1,7 @@
+locals {
+  k3s_arg_maybe_disable_traefik = var.ingress_enable_traefik ? "-v=0" : "--disable=traefik"
+}
+
 resource "k3d_cluster" "cluster" {
   name    = var.cluster_name
   servers = var.cluster_nodes_number_of_servers
@@ -26,13 +30,9 @@ resource "k3d_cluster" "cluster" {
   }
 
   k3s {
-    dynamic "extra_args" {
-      for_each = var.ingress_enable_traefik ? range(0) : []
-
-      content {
-        arg          = "--disable=traefik"
-        node_filters = ["server:*"]
-      }
+    extra_args {
+      arg          = local.k3s_arg_maybe_disable_traefik
+      node_filters = ["server:*"]
     }
   }
 

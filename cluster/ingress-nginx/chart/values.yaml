@@ -1,3 +1,5 @@
 replicaCount: 1
 ingressClassResource:
   default: true
+# containerPorts:
+#   http: 8080
