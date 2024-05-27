@@ -6,5 +6,5 @@ cluster_nodes_network_name = "lab-net"
 # host_ip = "127.0.0.1"
 host_name = "k3d-lab-cluster.local"
 # host_port = 6445
-# ingress_class = "traefik"
+# ingress_classname = "traefik"
 ingress_port = 8083

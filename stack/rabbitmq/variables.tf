@@ -13,14 +13,14 @@ variable "host_name" {
   }
 }
 
-variable "ingress_class" {
+variable "ingress_classname" {
   type        = string
-  description = "Whether to enable installation of `traefik` or `nginx` as Kubernetes default ingress controller."
+  description = "Whether to use `traefik` or `nginx` as ingress controller."
   default     = "traefik"
 
   validation {
-    condition     = can(regex("^(traefik|nginx)$", var.ingress_class))
-    error_message = "The `ingress_class` value must be one of `traefik` or `nginx`."
+    condition     = can(regex("^(traefik|nginx)$", var.ingress_classname))
+    error_message = "The `ingress_classname` value must be one of `traefik` or `nginx`."
   }
 }
 

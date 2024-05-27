@@ -1,6 +1,6 @@
 locals {
-  ingress_enable_traefik     = var.ingress_class == "traefik"
-  ingress_enable_nginx_count = var.ingress_class == "nginx" ? 1 : 0
+  ingress_enable_traefik     = var.ingress_classname == "traefik"
+  ingress_enable_nginx_count = var.ingress_classname == "nginx" ? 1 : 0
 }
 
 module "k3s-cluster" {
