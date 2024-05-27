@@ -17,8 +17,9 @@ resource "helm_release" "ingress-nginx" {
   name      = "ingress-nginx"
   namespace = kubernetes_namespace.ingress-nginx.metadata[0].name
 
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "nginx-ingress-controller"
+  version    = "11.1.2"
   lint       = true
 
   values = [
