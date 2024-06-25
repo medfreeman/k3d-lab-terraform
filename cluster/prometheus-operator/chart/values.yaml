@@ -1,0 +1,37 @@
+kube-prometheus:
+  prometheus:
+    ingress:
+      enabled: true
+      # ingressClassName: 'traefik'/'nginx'
+      # path: /prometheus #traefik
+      # annotations:
+      #   traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-prefix-prometheus@kubernetescrd
+      # path: /prometheus(/|$)(.*) #nginx
+      # annotations:
+      #   nginx.ingress.kubernetes.io/rewrite-target: /$2
+      tls: false
+      selfSigned: false
+    thanos:
+      ingress:
+        enabled: true
+        # ingressClassName: 'traefik'/'nginx'
+        # path: /thanos #traefik
+        # annotations:
+        #   traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-prefix-thanos@kubernetescrd
+        # path: /thanos(/|$)(.*) #nginx
+        # annotations:
+        #   nginx.ingress.kubernetes.io/rewrite-target: /$2
+        tls: false
+        selfSigned: false
+  alertmanager:
+    ingress:
+      enabled: true
+      # ingressClassName: 'traefik'/'nginx'
+      # path: /alertmanager #traefik
+      # annotations:
+      #   traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-prefix-alertmanager@kubernetescrd
+      # path: /alertmanager(/|$)(.*) #nginx
+      # annotations:
+      #   nginx.ingress.kubernetes.io/rewrite-target: /$2
+      tls: false
+      selfSigned: false

@@ -1,0 +1,39 @@
+# {{- if eq (index .Values "kube-prometheus").prometheus.ingress.ingressClassName "traefik" }}
+# ---
+# apiVersion: traefik.io/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: strip-prefix-prometheus
+#   namespace: kube-system
+# spec:
+#   stripPrefix:
+#     forceSlash: false
+#     prefixes:
+#       - {{ (index .Values "kube-prometheus").prometheus.ingress.path }}
+# {{- end }}
+{{- if eq (index .Values "kube-prometheus").prometheus.thanos.ingress.ingressClassName "traefik" }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-prefix-thanos
+  namespace: kube-system
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+      - {{ (index .Values "kube-prometheus").prometheus.thanos.ingress.path }}
+{{- end }}
+{{- if eq (index .Values "kube-prometheus").alertmanager.ingress.ingressClassName "traefik" }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-prefix-alertmanager
+  namespace: kube-system
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+      - {{ (index .Values "kube-prometheus").alertmanager.ingress.path }}
+{{- end }}

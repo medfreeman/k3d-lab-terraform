@@ -1,0 +1,6 @@
+dependencies:
+- name: kube-prometheus
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 9.2.1
+digest: sha256:ac4dcb60d62c5e00d0af110d138a0aed4ae30a9e54d2b7ad05d30b6dac355aff
+generated: "2024-05-28T00:04:54.01811+02:00"

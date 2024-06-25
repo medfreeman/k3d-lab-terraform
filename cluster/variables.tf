@@ -36,6 +36,12 @@ variable "cluster_nodes_number_of_servers" {
   }
 }
 
+variable "enable_prometheus_operator" {
+  type        = bool
+  description = "Whether to enable installation of `prometheus-operator`."
+  default     = true
+}
+
 variable "host_ip" {
   type        = string
   description = "The host ip adress on which the Kubernetes cluster will be bound."

@@ -1,6 +1,8 @@
 locals {
   ingress-nginx_enable_count   = var.ingress_classname == "nginx" ? 1 : 0
   ingress-traefik_enable_count = var.ingress_classname == "traefik" ? 1 : 0
+
+  prometheus-operator_enable_count = var.enable_prometheus_operator ? 1 : 0
 }
 
 module "k3s-cluster" {
@@ -47,4 +49,21 @@ module "ingress-traefik" {
   depends_on = [module.k3s-cluster.cluster_name]
 
   ingress_port = var.ingress_port
+}
+
+module "prometheus-operator" {
+  count = local.prometheus-operator_enable_count
+
+  source = "./prometheus-operator"
+
+  providers = {
+    kubernetes = kubernetes
+    helm       = helm
+  }
+
+  # waits for the proper ingress to be initialized
+  depends_on = [module.ingress-nginx, module.ingress-traefik]
+
+  ingress_classname = var.ingress_classname
+  ingress_hostname  = var.host_name
 }
