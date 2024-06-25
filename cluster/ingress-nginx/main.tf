@@ -22,6 +22,8 @@ resource "helm_release" "ingress-nginx" {
   version    = "11.3.0"
   lint       = true
 
+  wait_for_jobs = true
+
   values = [
     file("${path.module}/chart/values.yaml")
   ]

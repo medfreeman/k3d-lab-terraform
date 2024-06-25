@@ -20,7 +20,7 @@
     "lint:format": "prettier --write './**/*.{js,md,json,json5,yaml}'",
     "lint:terraform": "tofu fmt && tofu validate",
     "init:all": "pnpm init:cluster && pnpm init:rabbitmq",
-    "init:cluster": "folder=cluster pnpm tofu:init && folder=cluster/ingress-nginx pnpm tofu:init && folder=cluster/k3d pnpm tofu:init",
+    "init:cluster": "folder=cluster pnpm tofu:init && folder=cluster/ingress-nginx pnpm tofu:init && folder=cluster/ingress-traefik pnpm tofu:init && folder=cluster/k3d pnpm tofu:init",
     "plan:cluster": "folder=cluster pnpm tofu:plan -var-file=../terraform.tfvars",
     "show:cluster": "folder=cluster pnpm tofu:show",
     "apply:cluster": "folder=cluster pnpm tofu:apply",

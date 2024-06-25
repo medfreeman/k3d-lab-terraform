@@ -44,11 +44,6 @@ variable "host_port" {
   description = "The port number on which the Kubernetes cluster control plane will be available."
 }
 
-variable "ingress_enable_traefik" {
-  type        = bool
-  description = "Whether to enable installation of `traefik` as a Kubernetes default ingress controller."
-}
-
 variable "ingress_port" {
   type        = number
   description = "The port number on which the Kubernetes cluster ingress will be available."

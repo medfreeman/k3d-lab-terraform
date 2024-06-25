@@ -1,6 +1,6 @@
 locals {
-  ingress_enable_traefik     = var.ingress_classname == "traefik"
-  ingress_enable_nginx_count = var.ingress_classname == "nginx" ? 1 : 0
+  ingress-nginx_enable_count   = var.ingress_classname == "nginx" ? 1 : 0
+  ingress-traefik_enable_count = var.ingress_classname == "traefik" ? 1 : 0
 }
 
 module "k3s-cluster" {
@@ -14,12 +14,11 @@ module "k3s-cluster" {
   host_ip                         = var.host_ip
   host_name                       = var.host_name
   host_port                       = var.host_port
-  ingress_enable_traefik          = local.ingress_enable_traefik
   ingress_port                    = var.ingress_port
 }
 
 module "ingress-nginx" {
-  count = local.ingress_enable_nginx_count
+  count = local.ingress-nginx_enable_count
 
   source = "./ingress-nginx"
 
@@ -28,6 +27,23 @@ module "ingress-nginx" {
     helm       = helm
   }
 
+  # waits for the cluster to be initialized
+  depends_on = [module.k3s-cluster.cluster_name]
+
+  ingress_port = var.ingress_port
+}
+
+module "ingress-traefik" {
+  count = local.ingress-traefik_enable_count
+
+  source = "./ingress-traefik"
+
+  providers = {
+    kubernetes = kubernetes
+    helm       = helm
+  }
+
+  # waits for the cluster to be initialized
   depends_on = [module.k3s-cluster.cluster_name]
 
   ingress_port = var.ingress_port
