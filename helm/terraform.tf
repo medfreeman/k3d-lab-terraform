@@ -7,7 +7,7 @@ terraform {
     }
     helm = {
       source                = "hashicorp/helm"
-      version               = "~> 2.13.1"
+      version               = "~> 2.15.0"
       configuration_aliases = [helm]
     }
   }
