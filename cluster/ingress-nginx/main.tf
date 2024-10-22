@@ -19,7 +19,7 @@ resource "helm_release" "ingress-nginx" {
 
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "nginx-ingress-controller"
-  version    = "11.3.0"
+  version    = "11.5.1"
   lint       = true
 
   values = [
